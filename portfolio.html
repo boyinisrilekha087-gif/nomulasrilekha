@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srilekha Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: #0f172a;
+            color: white;
+            transition: 0.3s;
+        }
+        /* Navbar */
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+        }
+        
+        nav h2 {
+            color: #38bdf8;
+        }
+        
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        button {
+            background: #38bdf8;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        /* Hero */
+        
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            color: #38bdf8;
+        }
+        
+        .typing {
+            border-right: 3px solid #38bdf8;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+        }
+        /* Sections */
+        
+        section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        
+        h2 {
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+        /* Cards */
+        
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        /* Light Mode */
+        
+        .light {
+            background: #f1f5f9;
+            color: black;
+        }
+        
+        .light .card {
+            background: white;
+        }
+        /* Footer */
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #020617;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Srilekha</h2>
+        <div>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <button onclick="toggleMode()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Nomula Srilekha</h1>
+        <h3 class="typing" id="typing"></h3>
+        <br><br>
+        <a href="resume.pdf" download>
+            <button>⬇ Download Resume</button>
+        </a>
+    </div>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="card">
+            Motivated Web Developer skilled in HTML, CSS, JavaScript, Python, and C.
+        </div>
+    </section>
+
+    <section>
+        <h2>Skills</h2>
+        <div class="card">
+            HTML • CSS • JavaScript • Python • C <br> MongoDB • SQL • Git • VS Code
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="card">
+            <h3>Online Job Portal</h3>
+            <p>Job posting and application system using HTML, CSS, JS.</p>
+        </div>
+
+        <div class="card">
+            <h3>Student Management System</h3>
+            <p>Java + MySQL CRUD project.</p>
+        </div>
+
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="card">
+            📧 boyinisrilekha087@gmail.com <br> 🔗 GitHub: github.com/boyinisrilekha087-gif
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Srilekha Portfolio</p>
+    </footer>
+
+    <script>
+        /* Typing Effect */
+        const text = ["Web Developer", "Programmer", "Tech Enthusiast"];
+        let i = 0,
+            j = 0,
+            current = "",
+            isDeleting = false;
+
+        function type() {
+            current = text[i];
+
+            if (isDeleting) {
+                document.getElementById("typing").textContent = current.substring(0, j--);
+            } else {
+                document.getElementById("typing").textContent = current.substring(0, j++);
+            }
+
+            if (!isDeleting && j === current.length) {
+                isDeleting = true;
+                setTimeout(type, 1000);
+                return;
+            }
+
+            if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % text.length;
+            }
+
+            setTimeout(type, isDeleting ? 50 : 100);
+        }
+        type();
+
+        /* Dark/Light Mode */
+        function toggleMode() {
+            document.body.classList.toggle("light");
+        }
+    </script>
+
+</body>
+
+</html>
